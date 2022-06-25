@@ -1,7 +1,7 @@
 人狼RPG:Closed
 サバイバル:Closed
 クリエ:Closed
-Battle Royale銃撃戦:OPEN
+Battle Royale銃撃戦:Closed
 青鬼:Closed
 覚醒人狼:Closed
 Event:Closed
