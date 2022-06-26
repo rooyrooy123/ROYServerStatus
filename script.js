@@ -8,7 +8,7 @@ var ip = '123.198.130.10'
 
 let wDisplay = document.getElementById("idDisplay");
 let sCharset = "UTF-8";
-let sFileName = "replace.txt"
+let sFileName = "replacetest.txt"
 
 const timer = 5000    // ミリ秒で間隔の時間を指定
 window.addEventListener('load',function(){
