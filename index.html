@@ -1,56 +1,38 @@
-<!DOCTYPE html>
-<html>
-    <HEAD>
-    <META HTTP-EQUIV="CONTENT-TYPE" CONTENT="TEXT/HTML;CHARSET=SHIFT_JIS">
-    <TITLE>ブラウザとExcelの連携サンプル</TITLE>
-    <SCRIPT LANGUAGE="VBS">
-    '==============================================================================
-    ' Excel起動
-    '==============================================================================
-    Sub exeExcel()
+
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="UTF-8">
+      <!--
+    metaタグでcharsetをUTF-8に設定しています。
+    (モチロン他のキャラクターセットに変更しても良いですが)必ずcharsetに設定されているキャラクターセットでセーブして下さい。
+    -->
+      <title></title>
+      <style>
+      </style>
+    </head>
+    <body>
+      <div id="idDisplay"></div>
+    </body>
+    <script>
+      let wDisplay = document.getElementById("idDisplay");
+      let sCharset = "UTF-8";
+      let sFileName = "replace.txt"
     
-    Dim objExcelApp
+      let oAJAX = new XMLHttpRequest();
+      oAJAX.overrideMimeType('text/plain; charset=' + sCharset);
+      oAJAX.open("GET", sFileName, true);
+      oAJAX.onload = function () {
+        console.log("oAJAX.onload");
+        if (this.readyState === 4 && this.status === 200) {
+          console.log("this.readyState: " + this.readyState);
+          console.log("this.status: " + this.status);
+          let res = oAJAX.responseText;
+          wDisplay.innerText = res;
+        }
+      };
+      oAJAX.send(null);
+    </script>
+    </html>
     
-    On Error Resume Next
-    Err.Clear
-    Set objExcelApp = CreateObject("excel.application")
-    If Err Then
-    ' エラー処理
-    document.write "<font color=red>"
-    document.write "Excelを起動できませんでした<br>"
-    document.write "エラー:" & Err.Description & "<br>"
-    document.write "</font><br>" & vbCrLf
-    document.write "<a HREF=ie_option.htm TARGET=_BLANK>セキュリティレベル設定方法</A>"
-    Else
-    On Error goto 0
-    objExcelApp.Workbooks.Open("c:\test.xls")
-    Set objExcelBook = objExcelApp.ActiveWorkbook
-    Set objExcelSheets = objExcelBook.Worksheets
-    Set objExcelSheet = objExcelBook.Sheets("Sheet1")
-    objExcelSheet.Activate
-    objExcelApp.Application.Visible = True
-    
-    objExcelSheet.Cells(1,1).Value = document.MyForm.TXT_DATA1.value
-    objExcelSheet.Cells(2,1).Value = document.MyForm.TXT_DATA2.value
-    objExcelSheet.Cells(3,1).Value = document.MyForm.TXT_DATA3.value
-    
-    objExcelSheet.Activate
-    
-    End If
-    
-    End Sub
-    </SCRIPT>
-    </HEAD>
-    <BODY>
-    
-    <FORM NAME="MyForm" METHOD="POST">
-    
-    <INPUT TYPE="TEXT" NAME="TXT_DATA1" SIZE="15" MAXLENGTH="30"><BR>
-    <INPUT TYPE="TEXT" NAME="TXT_DATA2" SIZE="15" MAXLENGTH="30"><BR>
-    <INPUT TYPE="TEXT" NAME="TXT_DATA3" SIZE="15" MAXLENGTH="30"><BR>
-    <INPUT TYPE="BUTTON" STYLE="WIDTH:150px" VALUE="Excelへデータ送信" NAME="BTN_EXCEL" onClick="exeExcel()"><BR>
-    
-    </FORM>
-    
-    </BODY>
-    </HTML>
