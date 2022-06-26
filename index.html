@@ -4,35 +4,29 @@
     <html>
     <head>
       <meta charset="UTF-8">
-      <!--
-    metaタグでcharsetをUTF-8に設定しています。
-    (モチロン他のキャラクターセットに変更しても良いですが)必ずcharsetに設定されているキャラクターセットでセーブして下さい。
-    -->
-      <title></title>
-      <style>
-      </style>
+      <link rel="stylesheet" href="style.css">
+
+      <title>るーいのサーバー「稼働状況リスト」</title>
+      <script src="script.js"></script>
     </head>
     <body>
-      <div id="idDisplay"></div>
+      <div class="center">
+        <h1 style="color:violet; font-weight:bolder; margin-bottom: auto;">るーいのサーバー稼働状況</h1>
+        <h3 style="margin-top:1vh; color:darkcyan;">リストをクリックすると選んだサーバーのIPを確認できます。</h3>
+      </div>
+        <div class="contents">
+          <h2 style="color:lawngreen; margin:0%; padding-top:1vh">サーバーリスト</h2>
+          <ul id="serverlist"> <!--ここにli要素を追加-->
+          </ul>
+        </div>
+      <div class="center">
+        <div class="contents openlist">
+          <h2>開放中のサーバー</h2>
+          <ul id="openserverlist">
+        </ul>
+        </div>
+      </div>
+
+      
     </body>
-    <script>
-      let wDisplay = document.getElementById("idDisplay");
-      let sCharset = "UTF-8";
-      let sFileName = "replace.txt"
-    
-      let oAJAX = new XMLHttpRequest();
-      oAJAX.overrideMimeType('text/plain; charset=' + sCharset);
-      oAJAX.open("GET", sFileName, true);
-      oAJAX.onload = function () {
-        console.log("oAJAX.onload");
-        if (this.readyState === 4 && this.status === 200) {
-          console.log("this.readyState: " + this.readyState);
-          console.log("this.status: " + this.status);
-          let res = oAJAX.responseText;
-          wDisplay.innerText = res;
-        }
-      };
-      oAJAX.send(null);
-    </script>
     </html>
-    

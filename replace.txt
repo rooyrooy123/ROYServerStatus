@@ -1,7 +1,7 @@
-人狼RPG:Closed
-サバイバル:Closed
-クリエ:Closed
-Battle Royale銃撃戦:Closed
-青鬼:Closed
-覚醒人狼:Closed
-Event:Closed
+人狼RPG):Closed:Port番号、E0000番、E)
+青鬼):Closed:Port番号、E0000番、E)
+Event):Closed:Port番号、E0000番、E)
+サバイバル):Closed:Port番号、E0000番、E)
+クリエイチE��チE:Closed:Port番号、E0000番、E)
+Battle Royale銁E��戦):Closed:Port番号、E0000番、E)
+覚�E人狼):Closed:Port番号、E0000番、E)
