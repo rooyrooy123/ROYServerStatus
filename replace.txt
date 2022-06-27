@@ -1,6 +1,6 @@
 人狼RPG):Closed:Port番号「10000番」:)
 青鬼):Closed:Port番号「20000番」:)
-Event):OPEN:Port番号「20000番」:)
+Event):Closed:Port番号「20000番」:)
 サバイバル):Closed:Port番号「30000番」:)
 クリエイティブ):Closed:Port番号「40000番」:)
 Battle Royale銃撃戦):Closed:Port番号「50000番」:)
