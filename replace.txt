@@ -3,5 +3,5 @@
 Event):Closed:Port番号「20000番」:)
 サバイバル):Closed:Port番号「30000番」:)
 クリエイティブ):Closed:Port番号「40000番」:)
-Battle Royale銃撃戦):Closed:Port番号「50000番」:)
+Battle Royale銃撃戦):OPEN:Port番号「50000番」:)
 覚醒人狼):Closed:Port番号「60000番」:)

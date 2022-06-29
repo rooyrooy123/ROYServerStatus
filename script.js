@@ -25,6 +25,7 @@ if (this.readyState === 4 && this.status === 200) {
     console.log("this.readyState: " + this.readyState);
     console.log("this.status: " + this.status);
      res = AJAX.responseText;
+    
     //wDisplay.innerText = res;//案これ表示しないで行のやつをループで呼び出す
     load();
 
