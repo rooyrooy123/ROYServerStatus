@@ -13,6 +13,7 @@ let sFileName = "replace.txt"
 const timer = 5000    // ミリ秒で間隔の時間を指定
 window.addEventListener('load',function(){
   setInterval('location.reload()',timer);
+  
 });
 var openlist = []
 
