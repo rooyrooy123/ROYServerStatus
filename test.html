@@ -1,11 +1,37 @@
-<!DOCTYPE html>
-<body>
-    <script src="testscript.js"></script>
-    <noscript>
-        JavaScriptを使用してます．
-    </noscript>
-    <iframe src="replace.txt" title="sample" id="sample">
-        この部分はインラインフレームを使用
-    </iframe>
-    test
-</body>
+
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="UTF-8">
+      <link rel="stylesheet" href="style.css">
+
+      <title>るーいのサーバー「稼働状況リスト」</title>
+      <script src="testscript.js"></script>
+    </head>
+    <body>
+      <div class="center">
+        <a><h1 style="color:violet; font-weight:bolder; margin-bottom: auto;">るーいのサーバー稼働状況</h1></a>
+        <h3 style="margin-top:1vh; color:darkcyan;" class="aboutcopy">リスト内のサーバーをクリックすると選んだサーバーのIPをコピーできます。</h3>
+      </div>
+        <div class="contents">
+          <h2 style="color:lawngreen; margin:0%; padding-top:1vh">サーバーリスト</h2>
+          <ul id="serverlist"> <!--ここにli要素を追加-->
+          </ul>
+        </div>
+      <div class="center">
+        <div class="contents openlist">
+          <h2>開放中のサーバー</h2>
+          <ul id="openserverlist">
+        </ul>
+        </div>
+        <div style="color:red;">※仕様上、WEBに反映されるまでには数分のタイムラグが発生します。</div>
+        <iframe src="replace.txt" width="800px" height="400px" id="frame"></iframe>
+      </div>
+      
+
+      
+    </body>
+    </html>
+
+
