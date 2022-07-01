@@ -18,12 +18,14 @@ window.onload = function() {
 count++;
 function load(){
 
+  var reloadbut = document.getElementById('reload');
+  reloadbut.style.display="none"
 
   //リセット処理
   const port = [];
-const server = [];
-const version = [];
-const removeul = document.getElementById ( "serverlist" ) ;
+  const server = [];
+  const version = [];
+  const removeul = document.getElementById ( "serverlist" ) ;
   
   //[li]の数を取得する
   const len = removeul.children.length ;
@@ -114,6 +116,9 @@ request.onload = function () {
   li.appendChild(info3_1);
   ul.appendChild(li);
   li.onclick=(copy)
+  if (i>=port.length - 1){
+  reloadbut.style.display="inline-block"
+}
   if (data==null){//クローズの場合
     li.classList.add('serverclose');
     li.classList.remove('serveropen');
@@ -147,11 +152,11 @@ request.onload = function () {
     ul.appendChild(li); 
   }
   
+
 };
 
 request.send();
 }
-
 }
 
 
