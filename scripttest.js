@@ -1,44 +1,3 @@
-function xhrget(i_url)
-{  
-    var xhr = window.XDomainRequest ? new XDomainRequest() : new XMLHttpRequest();  
-    try { 
-        xhr.open("GET",i_url,false);
-        xhr.send(null);  
-    } catch (e) {
-	    return null;
-    }
-    return xhr.responseText;
-}
-
-function update()
-{
-	number_of_update++;
-	var s=xhrget("http://nyatla.jp/ws/mcsapi/t.php?cmd=si&s=****&p=25565&f=json");
-	var v;
-	if(s==null){
-	}else{
-		v=eval("("+s+")");
-	}
-	alert(v);
-}
-
-function webtest(){
-    
-const url = 'http://nyatla.jp/ws/mcsapi/mcsapi.php?cmd=si&s=123.198.130.10&p=50000';
-fetch(url).then(function(response) {
-  return response.text();
-}).then(function(text) {
-  console.log(text);
-  if(~text.indexOf('ONLINE')){
-    alert(text)
-
-  }
-});
-}
-
-
-
-
 
 
 
@@ -47,10 +6,9 @@ var ip = '123.198.130.10'
 
 
 
-
 let wDisplay = document.getElementById("idDisplay");
 let sCharset = "UTF-8";
-let sFileName = "replacetest.txt"
+let sFileName = "replace.txt"
 
 const timer = 5000    // ミリ秒で間隔の時間を指定
 window.addEventListener('load',function(){
@@ -73,33 +31,44 @@ if (this.readyState === 4 && this.status === 200) {
     load();
 
 function load(){
-
-    var loopnumsplit = res.split('/')
-    var loopnum = loopnumsplit.length;
+    var loopnumsplit = res.split(':)')
+    var loopnum = loopnumsplit.length - 1;
     //OPENのとこを色変更
     //行とりだす ループ0回目からでn
     for (var count = 0; count < loopnum; count++) {
-      console.log('loop:' +count)
-      var split = res.split('/')
-      var name = split[2*count];
-      console.log(name)
-      var port = split[2*count+1];
-      console.log(port)
+      var numsplit = res.split(':)')
+      var num = numsplit[count];
+      
+      
+      //openorclose 1 4 7  n=0からの等差数列3n + 1
+      var opensplit = res.split(':')
+      var open = opensplit[3*count + 1];
 
+      //port 1 2 3 4 5 ループ0回目からでn+1
+      portsplit = res.split('Port番号「');
+      var port = portsplit[count + 1]//変更するとここ2つはめ変更しないで
+      port = port.split('番」')
+      port = port[0]//変更しない
+
+
+      //name 0 2 4で鯖名 ループ0回目からで 2n
+      var namesplit = res.split(')')
+      var name = namesplit[2*count]
+
+      var namesplit = res.split(')')
 
       var ul = document.getElementById('serverlist');
       // li要素を作成
       var li = document.createElement('li');
 
-
       // テキスト情報を作成
-      var info = document.createTextNode(name);
+      var info = document.createTextNode(num);
       
       // ul要素に追加
       li.appendChild(info);
 
 
-      if (~name.indexOf('人狼RPG')){
+      if ((~name.indexOf('人狼RPG'))){
         var version = document.createTextNode('version:1.12.2');
         li.appendChild(version);
       }else if(~name.indexOf('青鬼')){
@@ -122,76 +91,54 @@ function load(){
         var version = document.createTextNode('version:1.12.2');
         li.appendChild(version);
       }
-      var port2 = document.createTextNode(port);
-      li.appendChild(port2);
       ul.appendChild(li);  
 
-      const url = 'http://nyatla.jp/ws/mcsapi/mcsapi.php?cmd=si&s=123.198.130.10&p=' + port;
-      fetch(url).then(function(response) {
-        
-        return response.text();
-      }).then(function(text) {
-        var li = document.createElement('li');
-        if(~text.indexOf('ONLINE')){
-
-          var check ='online'
       
-        }else{//サーバー閉鎖中の場合
-          var check ='offline'
 
-          var li = document.createElement('li');
-          li.classList.add('serverclose');
-          li.classList.remove('serveropen');
-          var close = document.createTextNode('  ✘');
-          li.appendChild(close)
-          li.onclick=(copy2)
-
-        }
-      if (check == 'online'){
-li.classList.remove('serverclose');
-          li.classList.add('serveropen');
-          var opencircle = document.createTextNode('  〇');
-          li.appendChild(opencircle)
-          li.onclick=(copy2)
-          //以下開放中のサーバーリスト処理
-
-
-          
-          var ul = document.getElementById('openserverlist');
-          // li要素を作成
-          var li = document.createElement('li');
-
-          // テキスト情報を作成
-          
-          var split = res.split('/')
-          var name = split[2*count];
-          var port = split[2*count+1];
-          
-          var nameinfo = document.createTextNode(name);
-          var portinfo = document.createTextNode(':'+ port);
-          var info1 = document.createTextNode(':IP⇒');
-          var infoip = document.createTextNode(ip);
-          var namesplit = res.split(')')
-          var name = namesplit[2*count]
-
-          // ul要素に追加
-          var kuuhaku = document.createTextNode('   ');
-          li.appendChild(nameinfo);
-          li.appendChild(info1);
-          li.appendChild(infoip);
-          li.appendChild(portinfo);
-          ul.appendChild(li);
-          li.appendChild(kuuhaku);
-          li.appendChild(version);
-          li.onclick=(copy)
-      }else{
-
-      }
-
+      if (open == 'Closed'){//サーバークローズの場合
+        li.classList.add('serverclose');
+        li.classList.remove('serveropen');
+        var close = document.createTextNode('  ✘');
+        li.appendChild(close)
+        li.onclick=(copy2)
+      }else{//サーバー開放中の場合
+        li.classList.remove('serverclose');
+        li.classList.add('serveropen');
+        var opencircle = document.createTextNode('  〇');
+        li.appendChild(opencircle)
+        li.onclick=(copy2)
+        //以下開放中のサーバーリスト処理
+        var numsplit = res.split(':)')
+        var num = numsplit[count];
         
+        var ul = document.getElementById('openserverlist');
+        // li要素を作成
+        var li = document.createElement('li');
 
-      });
-       
+        // テキスト情報を作成
+        var nameinfo = document.createTextNode(name);
+        var portinfo = document.createTextNode(':'+ port);
+        var info1 = document.createTextNode(':IP⇒');
+        var infoip = document.createTextNode(ip);
+        var namesplit = res.split(')')
+        var name = namesplit[2*count]
+
+        // ul要素に追加
+        var kuuhaku = document.createTextNode('   ');
+        li.appendChild(nameinfo);
+        li.appendChild(info1);
+        li.appendChild(infoip);
+        li.appendChild(portinfo);
+        ul.appendChild(li);
+        li.appendChild(kuuhaku);
+        li.appendChild(version);
+        li.onclick=(copy)
+
+
+      
+
+
+       }
     }
   }
 
