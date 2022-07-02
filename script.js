@@ -2,7 +2,7 @@
 const ip = '123.198.130.10'
 const ip2 = '123.198.130.10:'
 
-const timer = 20000    // ミリ秒で間隔の時間を指定
+const timer = 60000    // ミリ秒で間隔の時間を指定
 window.addEventListener('load',function(){
   setInterval('load()',timer);
   
@@ -200,7 +200,7 @@ request.onload = function () {
   })
  setTimeout (()=>{
   reloadbut.style.display="inline-block"
- },5000)
+ },30000)
 
 };
 
