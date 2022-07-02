@@ -87,12 +87,14 @@ for (let i = 0; i < 10; ++i) {
 
 for (let i = 0; i < port.length; ++i) {
 var request = new XMLHttpRequest();
-request.open('GET', 'https://minecraft-api.com/api/ping/playeronline.php?ip=123.198.130.10&port=' + port[i], true);
+request.open('GET', 'https://mcapi.us/server/status?ip=' + ip + '&port=' + port[i], true);
 request.responseType = 'json';
-
 request.onload = function () {
-  var data = this.response;
+  var api = this.response;
+  data = api.players.now;
+
   var data2 = 'Online:' + data + '人';
+
   console.log(server[i] +port[i] + 'オンライン人数⇒' +data + '人');
   
   var ul = document.getElementById('serverlist');
@@ -119,11 +121,13 @@ request.onload = function () {
   if (i>=port.length - 1){
   reloadbut.style.display="inline-block"
 }
-  if (data==null){//クローズの場合
+  if ((api.online==false)){//クローズの場合
     li.classList.add('serverclose');
     li.classList.remove('serveropen');
   } 
-  if (!(data==null)){
+  if ((api.online==true)){
+    var nowversion = api.server.name;//実際に開いているバージョン表示
+    nowversion = ' Version:' + nowversion + ' ';
     var info3_2 = document.createTextNode(data2);
     li.appendChild(info3_2);
     ul.appendChild(li); 
@@ -137,7 +141,7 @@ request.onload = function () {
     var info1 = document.createTextNode('⇒');
     var info2 = document.createTextNode(ip2);
     var info3 = document.createTextNode(port[i]);
-    var info3_1 = document.createTextNode(version[i]);
+    var info3_1 = document.createTextNode(nowversion);
     var info4 = document.createTextNode(data2);
     
     
@@ -150,6 +154,7 @@ request.onload = function () {
     li.appendChild(info3_1);
     li.appendChild(info4);
     ul.appendChild(li); 
+    li.onclick=(copy)
   }
   
 
