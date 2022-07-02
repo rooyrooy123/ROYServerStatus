@@ -94,6 +94,7 @@ request.onload = function () {
   var api = this.response;
   data = api.players.now;
 
+
   var data2 = 'Online:' + data + '人';
 
   console.log(server[i] +port[i] + 'オンライン人数⇒' +data + '人');
@@ -224,19 +225,9 @@ function copy(){
 }
 
 
-//target要素を指定
-const target = document.getElementById('serverlist');
 
-//マウスが要素上に入った時
-target.addEventListener('mouseover', () => {
-  
-  target.style.background = '#000000';
-  
-}, false);
-
-//マウスが要素上から離れた時
-target.addEventListener('mouseleave', () => {
-  
- target.style.background = '#0091EA';
-  
-}, false);
+function iframe(){
+  var iframebtn = document.getElementById("iframe");
+  iframebtn.classList.toggle("hidden")
+  iframebtn.style.transition="all 0.5s 0s ease"
+}
