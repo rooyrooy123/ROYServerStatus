@@ -168,3 +168,44 @@ li:hover{
 
 
 
+
+
+
+
+  #msg {
+    position: relative;
+    padding: 20px;
+    background-color: #f0a15b;
+    border-radius: 15px;
+
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+}
+    
+    #msg::before {
+    content: '';
+    position: absolute;
+    display: block;
+    border-radius: 50%;
+    background-color: #f0a15b;
+    top:-10px;
+    left: -35px;
+    bottom: 15px;
+    width: 30px;
+    height: 30px;
+    }
+    
+    #msg::after {
+    content: '';
+    position: absolute;
+    display: block;
+    border-radius: 50%;
+    background-color: #f0a15b;
+    top:-10px;
+    left: -55px;
+    bottom: 10px;
+    width: 15px;
+    height: 15px;
+    }
