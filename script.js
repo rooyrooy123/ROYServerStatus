@@ -56,7 +56,7 @@ for (let i = 0; i < 10; ++i) {
     server.push("人狼RPG");
     version.push(" Version:1.12.2 ")
   }else if(i == 1){
-    port.push("20000");
+    port.push("15000");
     server.push("青鬼");
     version.push(" Version:1.16.3 ")
   }else if(i == 2){
@@ -119,6 +119,12 @@ request.onload = function () {
   li.appendChild(info3_1);
   ul.appendChild(li);
   li.onclick=(copy)
+
+
+
+
+
+
   if (i>=port.length - 1){
   reloadbut.style.display="inline-block"
 }
@@ -137,7 +143,7 @@ request.onload = function () {
     li.classList.add('serveropen');
     var ul = document.getElementById('openserverlist');
     // li要素を作成
-    var li = document.createElement('li');
+    var li2 = document.createElement('li');
     var info = document.createTextNode(server[i]);
     var info1 = document.createTextNode('⇒');
     var info2 = document.createTextNode(ip2);
@@ -148,17 +154,51 @@ request.onload = function () {
     
     
     // ul要素に追加
-    li.appendChild(info);
-    li.appendChild(info1);
-    li.appendChild(info2);
-    li.appendChild(info3);
-    li.appendChild(info3_1);
-    li.appendChild(info4);
-    ul.appendChild(li); 
-    li.onclick=(copy)
+    li2.appendChild(info);
+    li2.appendChild(info1);
+    li2.appendChild(info2);
+    li2.appendChild(info3);
+    li2.appendChild(info3_1);
+    li2.appendChild(info4);
+    ul.appendChild(li2); 
+    li2.onclick=(copy)
+
+
   }
   
 
+  li.addEventListener("mouseover", function(event) {
+
+
+    var newElement = document.createElement("p"); 
+    var newContent = document.createTextNode("bbb"); 
+    newElement.appendChild(newContent); 
+    newElement.setAttribute("class","right"); 
+    newElement.setAttribute("id","msgmove")
+     
+
+
+    // 子要素１への参照を取得
+    var serverlist = document.getElementById('serverlist')
+     
+    // 追加
+    serverlist.insertBefore(newElement, event.target);
+    
+  
+    var msg = document.getElementById('msg');
+  
+    let elem = document.getElementById('msgmove')
+    elem.innerHTML ="";
+    msg.classList.remove("hidden")
+  let rect = elem.getBoundingClientRect();
+  msg.style.position="absolute";
+  msg.style.top=rect.y + 'px';
+  msg.style.left=rect.x + 'px';
+  msg.style.transition="all 0.5s 0s ease"
+  elem.remove();
+  
+    
+  })
 };
 
 request.send();
@@ -182,3 +222,21 @@ function copy(){
   document.execCommand("copy");
   alert('IPをコピーした' + this.textContent)
 }
+
+
+//target要素を指定
+const target = document.getElementById('serverlist');
+
+//マウスが要素上に入った時
+target.addEventListener('mouseover', () => {
+  
+  target.style.background = '#000000';
+  
+}, false);
+
+//マウスが要素上から離れた時
+target.addEventListener('mouseleave', () => {
+  
+ target.style.background = '#0091EA';
+  
+}, false);

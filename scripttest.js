@@ -181,3 +181,6 @@ function copy2(){
   alert('IPをコピーした' + this.textContent)
 }
 
+
+
+
