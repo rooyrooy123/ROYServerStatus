@@ -90,6 +90,7 @@ var request = new XMLHttpRequest();
 request.open('GET', 'https://mcapi.us/server/status?ip=' + ip + '&port=' + port[i], true);
 request.responseType = 'json';
 request.onload = function () {
+  console.log( 'https://mcapi.us/server/status?ip=' + ip + '&port=' + port[i])
   var api = this.response;
   data = api.players.now;
 
