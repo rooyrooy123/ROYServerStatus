@@ -126,9 +126,7 @@ request.onload = function () {
 
 
 
-  if (i>=port.length - 1){
-  reloadbut.style.display="inline-block"
-}
+
   if ((api.online==false)){//クローズの場合
     li.classList.add('serverclose');
     li.classList.remove('serveropen');
@@ -200,6 +198,10 @@ request.onload = function () {
   
     
   })
+ setTimeout (()=>{
+  reloadbut.style.display="inline-block"
+ },5000)
+
 };
 
 request.send();
