@@ -51,8 +51,8 @@ function load(){
 
 console.log('LOADINGNOW...')
 for (let i = 0; i < 10; ++i) {
-  if (i == 0){
-    port.push ("10000"); //人狼RPG
+  if (i == 0){//サーバーClosed時の表示バージョン
+    port.push ("10000"); 
     server.push("人狼RPG");
     version.push(" Version:1.12.2 ")
   }else if(i == 1){
