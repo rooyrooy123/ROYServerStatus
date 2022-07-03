@@ -258,3 +258,4 @@ function iframe(){
   iframebtn.classList.remove("hidden")
   iframebtn.setAttribute("src", "http://tt0.link/minecraft/others/servercheck/img/default.php?ip=" + inputip + '&port=' + inputport)
 }
+
