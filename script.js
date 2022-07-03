@@ -93,8 +93,14 @@ request.onload = function () {
   console.log( 'https://mcapi.us/server/status?ip=' + ip + '&port=' + port[i])
   var api = this.response;
   data = api.players.now;
+  var errorcheck =- api.error;
+  console.log(api.error)
+  var geterror = '';
+  if ((~api.error.indexOf('protocol error'))){
+    var geterror = 'API側でERRORが発生したのを検知しました。'
 
 
+  }
   var data2 = 'Online:' + data + '人';
 
   console.log(server[i] +port[i] + 'オンライン人数⇒' +data + '人');
@@ -109,6 +115,9 @@ request.onload = function () {
   var info2 = document.createTextNode(ip2);
   var info3 = document.createTextNode(port[i]);
   var info3_1 = document.createTextNode(version[i]);
+  if ((~geterror.indexOf('ERROR'))){
+    var info3_2 = document.createTextNode(geterror);
+  }
   
   
   
@@ -118,6 +127,9 @@ request.onload = function () {
   li.appendChild(info2);
   li.appendChild(info3);
   li.appendChild(info3_1);
+  if ((~geterror.indexOf('ERROR'))){
+    li.appendChild(info3_2);
+  }
   ul.appendChild(li);
   li.onclick=(copy)
 
@@ -168,6 +180,8 @@ request.onload = function () {
 
   li.addEventListener("mouseover", function(event) {
 
+      
+
 
     var newElement = document.createElement("p"); 
     var newContent = document.createTextNode("bbb"); 
@@ -195,8 +209,8 @@ request.onload = function () {
   msg.style.left=rect.x + 'px';
   msg.style.transition="all 0.5s 0s ease"
   elem.remove();
-  
-    
+
+
   })
  setTimeout (()=>{
   reloadbut.style.display="inline-block"
@@ -224,12 +238,23 @@ function copy(){
   document.addEventListener("copy" , listener);
   document.execCommand("copy");
   alert('IPをコピーした' + this.textContent)
+  var inputip = document.getElementById('inputip')
+  inputip.value = str
+  iframe()
 }
 
 
 
 function iframe(){
   var iframebtn = document.getElementById("iframe");
-  iframebtn.classList.toggle("hidden")
-  iframebtn.style.transition="all 0.5s 0s ease"
+  var inputip = document.getElementById('inputip')
+  inputip = inputip.value
+
+  var inputport;
+  var spip
+  spip = inputip.split(':');
+  inputip = spip[0];
+  inputport = spip[1];
+  iframebtn.classList.remove("hidden")
+  iframebtn.setAttribute("src", "http://tt0.link/minecraft/others/servercheck/img/default.php?ip=" + inputip + '&port=' + inputport)
 }

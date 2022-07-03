@@ -10,7 +10,9 @@
       <script src="script.js"></script>
     </head>
     <body>
-      <div id="msg" class="hidden" style="font-weight: bold; color:darkblue;">⇦クリックしてIPをコピー！！！</div>
+      <div id="msg" class="hidden" style="font-weight: bold; color:darkblue;">⇦クリックしてIPをコピー！！！
+      <br>AND:ページ下部に正確なサーバー開放状況を表示
+      </div>
       <div class="center">
         <a><h1 style="color:violet; font-weight:bolder; margin-bottom: auto;">るーいのサーバー稼働状況</h1></a>
         <h3 style="margin-top:1vh; color:darkcyan;" class="aboutcopy">リスト内のサーバーをクリックすると選んだサーバーのIPをコピーできます。</h3>
@@ -27,8 +29,14 @@
         </ul>
         </div>
         <span style="color:red;">※APIの影響で最新のデータが反映されるまで時間がかかる場合があります。</span>
+        <br>
         <input type="button" style="width:70%; background-color: beige;" value="クリックで再読み込み(定期的に自動でリロードされるようにはしています。)" id="reload" onclick="load()">
-        <br><br>
+
+
+        <input type="text" placeholder="ここに確認したいIPを入力" style="width:10%;" id="inputip">
+        <input type="button" style="width:60%;" value="このボタンをクリックして⇦⇦⇦にて入力したサーバーが開放中かを確認する(かなり正確)。あるいは、上のサーバーリストのIPをクリックすることで自動で表示します。" onclick="iframe()">
+        <br>
+        <img id="iframe" class="hidden">
  <!--       <input type="button" style="width:70%;" value="開放しているサーバーがない場合は、ここをクリック！もしかしたらAPIの不具合等が発生している場合があるかもしれないので...  駄菓子菓子、こっちの方が信憑性は低いです。" onclick="iframe()">
         <iframe src="replace.txt" width="70%" id="iframe" class="hidden"></iframe> -->
       </div>
