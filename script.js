@@ -93,14 +93,8 @@ request.onload = function () {
   console.log( 'https://mcapi.us/server/status?ip=' + ip + '&port=' + port[i])
   var api = this.response;
   data = api.players.now;
-  var errorcheck =- api.error;
   console.log(api.error)
-  var geterror = '';
-  if ((~api.error.indexOf('protocol error'))){
-    var geterror = 'API側でERRORが発生したのを検知しました。'
 
-
-  }
   var data2 = 'Online:' + data + '人';
 
   console.log(server[i] +port[i] + 'オンライン人数⇒' +data + '人');
@@ -115,9 +109,7 @@ request.onload = function () {
   var info2 = document.createTextNode(ip2);
   var info3 = document.createTextNode(port[i]);
   var info3_1 = document.createTextNode(version[i]);
-  if ((~geterror.indexOf('ERROR'))){
-    var info3_2 = document.createTextNode(geterror);
-  }
+
   
   
   
@@ -127,9 +119,7 @@ request.onload = function () {
   li.appendChild(info2);
   li.appendChild(info3);
   li.appendChild(info3_1);
-  if ((~geterror.indexOf('ERROR'))){
-    li.appendChild(info3_2);
-  }
+
   ul.appendChild(li);
   li.onclick=(copy)
 
