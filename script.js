@@ -1,7 +1,7 @@
 
 const ip = '123.198.130.10'
 const ip2 = '123.198.130.10:'
-
+const error = [];
 const timer = 60000    // ミリ秒で間隔の時間を指定
 window.addEventListener('load',function(){
   setInterval('load()',timer);
@@ -94,7 +94,6 @@ request.onload = function () {
   var api = this.response;
   data = api.players.now;
   console.log(api.error)
-
   var data2 = 'Online:' + data + '人';
 
   console.log(server[i] +port[i] + 'オンライン人数⇒' +data + '人');
@@ -110,6 +109,7 @@ request.onload = function () {
   var info3 = document.createTextNode(port[i]);
   var info3_1 = document.createTextNode(version[i]);
 
+
   
   
   
@@ -119,7 +119,6 @@ request.onload = function () {
   li.appendChild(info2);
   li.appendChild(info3);
   li.appendChild(info3_1);
-
   ul.appendChild(li);
   li.onclick=(copy)
 
@@ -202,6 +201,7 @@ request.onload = function () {
 
 
   })
+
  setTimeout (()=>{
   reloadbut.style.display="inline-block"
  },30000)
