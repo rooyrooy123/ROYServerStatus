@@ -1,13 +1,16 @@
 
 const ip = '123.198.130.10'
 const ip2 = '123.198.130.10:'
-const error = [];
+const time = 0;
 const timer = 60000    // ミリ秒で間隔の時間を指定
 window.addEventListener('load',function(){
   setInterval('load()',timer);
   
 });
-
+setTimeout (()=>{
+  time = time + 1
+  alert(time)
+ },1000)
 const port = [];
 const server = [];
 const version = [];
