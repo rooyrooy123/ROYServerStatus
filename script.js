@@ -82,6 +82,10 @@ for (let i = 0; i < 10; ++i) {
     port.push("60000");
     server.push("覚醒人狼");
     version.push(" Version:1.12.2 ")
+  }else if(i == 7){
+    port.push("25565");
+    server.push("ROYParkour(アスレサーバー)");
+    version.push(" Version:1.12.2 ")
   }
 
   console.log(port)
