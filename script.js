@@ -77,7 +77,7 @@ for (let i = 0; i < 10; ++i) {
   }else if(i == 5){
     port.push("50000");
     server.push("Battle Royale(銃撃戦)");
-    version.push(" Version:1.12.2 ")
+    version.push(" Version:1.16.3 ")
   }else if(i == 6){
     port.push("60000");
     server.push("覚醒人狼");
