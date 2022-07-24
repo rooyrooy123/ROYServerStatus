@@ -2,7 +2,7 @@
 青鬼):Closed:Port番号、E5000番、E)
 人狼RPG):OPEN:Port番号、E0000番、E)
 青鬼):Closed:Port番号、E5000番、E)
-Event):OPEN:Port番号、E0000番、E)
+Event):Closed:Port番号、E0000番、E)
 サバイバル):Closed:Port番号、E0000番、E)
 クリエイチE��チE:Closed:Port番号、E0000番、E)
 Battle Royale銁E��戦):Closed:Port番号、E0000番、E)
