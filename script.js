@@ -76,7 +76,7 @@ for (let i = 0; i < 10; ++i) {
     version.push(" Version:1.16.1 ")
   }else if(i == 5){
     port.push("50000");
-    server.push("Battle Royale(銃撃戦)");
+    server.push("銃撃戦");
     version.push(" Version:1.16.3 ")
   }else if(i == 6){
     port.push("60000");
@@ -86,6 +86,10 @@ for (let i = 0; i < 10; ++i) {
     port.push("25565");
     server.push("ROYParkour(アスレサーバー)");
     version.push(" Version:1.12.2 ")
+  }else if(i == 8){
+    port.push("55555");
+    server.push("ROYSHOT(狙撃バトロワ)");
+    version.push(" Version:1.18.2 ")
   }
 
   console.log(port)
