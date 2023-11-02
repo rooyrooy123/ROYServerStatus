@@ -68,8 +68,8 @@ for (let i = 0; i < 10; ++i) {
     version.push(" Version:未 ")
   }else if(i == 3){
     port.push("30000");
-    server.push("TUSB");
-    version.push(" Version:1.10.2,(たまに1.17.1)")
+    server.push("サバイバル最新");
+    version.push(" Version:1.20.2")
   }else if(i == 4){
     port.push("40000");
     server.push("クリエイティブ");
